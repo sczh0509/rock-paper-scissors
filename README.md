@@ -1,0 +1,1 @@
+This is my attempt at creating a rock paper scissors game as part of the odin project foundation module.
