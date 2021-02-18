@@ -7,54 +7,93 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <div id="selections">
+        <div class="selection">
+            <button id="rock">Rock</button>
+        </div>
+        <div class="selection">
+            <button id="paper">Paper</button>
+        </div>
+        <div class="selection">
+            <button id="scissors">Scissors</button>
+        </div>
+        <p>player</p>
+        <div id="playerScore">
+            0
+        </div>
+        <p>computer</p>
+        <div id="computerScore">
+            0
+        </div>
+    </div>
+    <div id="results">
+        
+    </div>
     <script>
+        let playerScore = document.querySelector('#playerScore');
+        let computerScore = document.querySelector('#computerScore');
+        const buttons = document.querySelectorAll('button');
+        const result = document.querySelector('#results');
+        
         function computerPlay() {
             let plays = ['rock', 'paper', 'scissors'];
             let index = Math.floor(Math.random() * 3);
             return plays[index];
         }
 
-        function playRound(playerSelection, computerSelection) {
-            playerSelection = playerSelection.toLowerCase();
-            if  (playerSelection === computerSelection) {
-                console.log('It\'s a tie!')
-                return 0;
+        function playRound(e) {
+            const computerSelection = computerPlay();
+            const playerSelection = e.srcElement.id.toLowerCase();
+            if (playerSelection === computerSelection) {
+                result.textContent = 'It\'s a tie!';
             } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-                console.log("You Win! Rock beats Scissors");
-                return 1;
+                result.textContent = "You Win! Rock beats Scissors";
+                playerScore.textContent = parseInt(playerScore.textContent) + 1;
             } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-                console.log("You Win! Paper beats Rock");
-                return 1;
+                result.textContent = "You Win! Paper beats Rock";
+                playerScore.textContent = parseInt(playerScore.textContent) + 1;
             } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-                console.log("You Win! Scissors beats Paper");
-                return 1;
+                result.textContent = "You Win! Scissors beats Paper";
+                playerScore.textContent = parseInt(playerScore.textContent) + 1;
             } else {
-                console.log(`You Lose! ${computerSelection[0].toUpperCase() + computerSelection.slice(1).toLowerCase()} beats ${playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase()}`);
-                return -1; 
+                result.textContent = `You Lose! ${computerSelection[0].toUpperCase() + computerSelection.slice(1).toLowerCase()} beats ${playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase()}`;
+                computerScore.textContent = parseInt(computerScore.textContent) + 1;
             }
-        }
-
+            checkCondition();
+        };
+        // function checkWin(playerSelection, computerSelection) {
+        //     if (playerSelection === computerSelection) {
+        //         result.textContent = 'It\'s a tie!';
+        //         return 0;
+        //     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+        //         result.textContent = "You Win! Rock beats Scissors";
+        //         return 1;
+        //     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+        //         result.textContent = "You Win! Paper beats Rock";
+        //         return 1;
+        //     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+        //         result.textContent = "You Win! Scissors beats Paper";
+        //         return 1;
+        //     } else {
+        //         result.textContent = `You Lose! ${computerSelection[0].toUpperCase() + computerSelection.slice(1).toLowerCase()} beats ${playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase()}`;
+        //         return -1;
+        //     }
+        // };
+        
         function game() {
-            let round = 0;
-            let playerScore = 0;
-            let computerScore = 0;
-            while (playerScore < 5 && computerScore < 5) {
-                let playerSelection = prompt('Please enter your play: ');
-                result = playRound(playerSelection, computerPlay());
-                if (result === 1) {
-                    playerScore ++;
-                } else if (result === -1) {
-                    computerScore ++;
-                }
-                round ++;
-            }
-            if (playerScore > computerScore) {
-                console.log('Congratulations! You won!');
-            } else {
-                console.log('Uh Oh. You lost!');
-            }
-        }
+            buttons.forEach(button => {
+                button.addEventListener('click', playRound);
+            });    
+        };
 
+        function checkCondition() {
+            if (playerScore.textContent >= 5 || computerScore.textContent >= 5) {
+                buttons.forEach(button => {
+                    button.removeEventListener('click', playRound);
+                });
+            } else return;
+        };
+ 
         game();
     </script>
 </body>
