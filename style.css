@@ -1,0 +1,97 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+button {
+    width: 100px;
+    height: 100px;
+    background: none;
+    border: none;
+    /* background-color: white; */
+    /* border: 1px solid black; */
+    border-radius: 10px;
+}
+button:hover {
+    border: 1px solid yellow;
+    background-color: yellow;
+}
+button:focus {
+    outline: none;
+}
+button#rock {
+    background-image: url(images/cave-painting.svg);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* border: none; */
+}
+button#paper {
+    background-image: url(images/toilet-paper.svg);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* border: none; */
+}
+button#scissors {
+    background-image: url(images/scissors.svg);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* border: none; */
+}
+#selections {
+    margin:auto;
+    display: flex;
+    justify-content: space-around;
+    width: 800px;
+    /* background-color: yellow; */
+}
+#intro {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-around;
+}
+#intro h1 {
+    font-family: 'Lexend Mega', sans-serif;
+    font-size: 35px;
+}
+#intro p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 50%;
+}
+#scores {
+    display: flex;
+    justify-content: center;
+}
+#player, #computer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+}
+#player p, #computer p {
+    color: yellow;
+    background-color: black;
+    display: inline-block;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+#player div, #computer div {
+    font-size: 20px;
+}
+#results {
+    width: 50%;
+    margin: 20px auto;
+    /* background-color: yellow; */
+    text-align: center;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    transition: ease-in;
+}

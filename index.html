@@ -4,31 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Roboto&display=swap" rel="stylesheet">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <div id="intro">
+        <h1>Man vs Machine</h1>
+        <p>The human race is in danger and you are the last man standing.</p>
+        <p>The only way to prevent the demise of humanity is to be the first to win 5 rounds in a game of rock, paper and scissors.</p>
+        <p>Now, pick your play.</p>
+    </div>
+    <div id="scores">
+        <div id="player">
+            <p>player score</p>
+            <div id="playerScore">
+                0
+            </div>
+        </div>
+        <div id="computer">
+            <p>computer score</p>
+            <div id="computerScore">
+                0
+            </div>
+        </div>  
+    </div>
     <div id="selections">
         <div class="selection">
-            <button id="rock">Rock</button>
+            <button id="rock"></button>
         </div>
         <div class="selection">
-            <button id="paper">Paper</button>
+            <button id="paper"></button>
         </div>
         <div class="selection">
-            <button id="scissors">Scissors</button>
-        </div>
-        <p>player</p>
-        <div id="playerScore">
-            0
-        </div>
-        <p>computer</p>
-        <div id="computerScore">
-            0
+            <button id="scissors"></button>
         </div>
     </div>
-    <div id="results">
-        
-    </div>
+    <div id="results"></div>
     <script>
         let playerScore = document.querySelector('#playerScore');
         let computerScore = document.querySelector('#computerScore');
