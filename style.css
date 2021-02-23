@@ -119,6 +119,7 @@ footer a {
     color: yellow;
 }
 .modal {
+    position: relative;
     display: none;
     z-index: 1;
     background-color: black;
@@ -128,6 +129,17 @@ footer a {
     bottom: 0px;
     margin: auto;
     padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: slidein;
+    animation-duration: 0.4s;
+}
+@keyframes slidein {
+    from {
+        bottom: -300px; opacity: 0;
+    }
+    to {
+        bottom: 0px; opacity: 1;
+    }
 }
 .content {
     display: flex;
