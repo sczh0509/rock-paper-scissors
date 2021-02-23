@@ -45,6 +45,13 @@
     </div>
     <div id="round"></div>
     <div id="results"></div>
+    <div id="mymodal" class="modal">
+        <div class="content">
+            <span id="close" class="item">&times;</span>
+            <p id="congratMessage" class="item"></p>
+            <div id="reset" class="item">play again</div>
+        </div>
+    </div>
     <footer>
         <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     </footer>
@@ -54,7 +61,11 @@
         const buttons = document.querySelectorAll('button');
         const result = document.querySelector('#results');
         const round = document.querySelector('#round');
+        const congratMessage = document.querySelector('#congratMessage');
         let count = 0;
+        const modalWindow = document.querySelector('#mymodal');
+        const close = document.querySelector('#close');
+        const again = document.querySelector('#reset');
         
         function computerPlay() {
             let plays = ['rock', 'paper', 'scissors'];
@@ -91,14 +102,32 @@
         };
 
         function checkCondition() {
-            if (playerScore.textContent >= 5 || computerScore.textContent >= 5) {
+            if (playerScore.textContent >= 5) {
                 buttons.forEach(button => {
                     button.removeEventListener('click', playRound);
                 });
-                
+                congratMessage.textContent = 'Congrats player, you are humanity\'s last hope.';
+                modalWindow.style.display = 'block';
+            } else if (computerScore.textContent >= 5) {
+                buttons.forEach(button => {
+                    button.removeEventListener('click', playRound);
+                });
+                congratMessage.textContent = 'Humanity has officially gone under';
+                modalWindow.style.display = 'block';
             } else return;
         };
- 
+        
+        close.onclick = function() {
+            modalWindow.style.display = 'none';
+        }
+        again.onclick = function() {
+            count = 0;
+            modalWindow.style.display = 'none';
+            computerScore.textContent = 0;
+            result.textContent ='';
+            playerScore.textContent = 0;
+            game();
+        }
         game();
     </script>
 </body>
