@@ -43,6 +43,7 @@
             <button id="scissors"></button>
         </div>
     </div>
+    <div id="round"></div>
     <div id="results"></div>
     <footer>
         <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
@@ -52,6 +53,8 @@
         let computerScore = document.querySelector('#computerScore');
         const buttons = document.querySelectorAll('button');
         const result = document.querySelector('#results');
+        const round = document.querySelector('#round');
+        let count = 0;
         
         function computerPlay() {
             let plays = ['rock', 'paper', 'scissors'];
@@ -62,6 +65,7 @@
         function playRound(e) {
             const computerSelection = computerPlay();
             const playerSelection = e.srcElement.id.toLowerCase();
+            round.textContent = `round ${++count}`;
             if (playerSelection === computerSelection) {
                 result.textContent = 'It\'s a tie!';
             } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
@@ -79,24 +83,6 @@
             }
             checkCondition();
         };
-        // function checkWin(playerSelection, computerSelection) {
-        //     if (playerSelection === computerSelection) {
-        //         result.textContent = 'It\'s a tie!';
-        //         return 0;
-        //     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        //         result.textContent = "You Win! Rock beats Scissors";
-        //         return 1;
-        //     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        //         result.textContent = "You Win! Paper beats Rock";
-        //         return 1;
-        //     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        //         result.textContent = "You Win! Scissors beats Paper";
-        //         return 1;
-        //     } else {
-        //         result.textContent = `You Lose! ${computerSelection[0].toUpperCase() + computerSelection.slice(1).toLowerCase()} beats ${playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase()}`;
-        //         return -1;
-        //     }
-        // };
         
         function game() {
             buttons.forEach(button => {
@@ -109,6 +95,7 @@
                 buttons.forEach(button => {
                     button.removeEventListener('click', playRound);
                 });
+                
             } else return;
         };
  
