@@ -11,6 +11,7 @@ button {
     /* background-color: white; */
     /* border: 1px solid black; */
     border-radius: 10px;
+    cursor: pointer;
 }
 button:hover {
     border: 1px solid yellow;
@@ -75,7 +76,7 @@ button#scissors {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 50px;
+    margin: 30px;
 }
 #player p, #computer p {
     color: yellow;
@@ -89,6 +90,7 @@ button#scissors {
 }
 #player div, #computer div {
     font-size: 20px;
+    font-family: 'Lexend Mega', sans-serif;
 }
 #results {
     width: 50%;
@@ -132,6 +134,7 @@ footer a {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     animation-name: slidein;
     animation-duration: 0.4s;
+    font-family: 'Roboto', sans-serif;
 }
 @keyframes slidein {
     from {
@@ -180,4 +183,31 @@ footer a {
 }
 .item {
     margin: 10px;
+}
+.line:hover {
+    transform: scale(1.5);
+    background-color: black ;
+    color: yellow;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+@keyframes transition {
+    from {
+        top: -300px;
+        opacity: 0;
+    }
+    to {
+        top: 0px;
+        opacity: 1;
+    }
+}
+#round {
+    font-size: 30px;
+    /* background-color: blue; */
+    width: 400px;
+    margin: auto;
+    text-align: center;
+    font-family: 'Lexend Mega', sans-serif;
+    margin-bottom: 10px;
 }
